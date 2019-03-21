@@ -1,15 +1,16 @@
 from catboost import CatBoostClassifier
-import time
+import pandas as pd
 
-start_time = time.time()
+df_test = pd.read_csv("csv/bank_test.csv", sep=',').to_numpy()
 
-train_data = [[0,3],
-              [4,1],
-              [8,1],
-              [9,1]]
-train_labels = [0,0,1,1]
+model = CatBoostClassifier().load_model("model.json", format="json")
 
-model = CatBoostClassifier(iterations=1000, task_type = "CPU")
-model.fit(train_data, train_labels, verbose = False)
-
-print(time.time()-start_time)
+X, Y = df_test[:, 0:13], df_test[:, 13]
+answer = model.predict(X)
+loss = 0
+for x in range(len(answer)):
+    if (Y[x] == 1 and answer[x] == 0):
+        loss += 1
+    if (Y[x] == 0 and answer[x] == 1):
+        loss += 1
+print("loss = ", loss)

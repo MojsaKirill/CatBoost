@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 catboost = "*"
+poll = "*"
 
 [dev-packages]
 
