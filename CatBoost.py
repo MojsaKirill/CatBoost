@@ -11,7 +11,7 @@ cat_features = [1, 2, 3, 5, 6, 7, 12]
 
 model = CatBoostClassifier(iterations=1000,
                            learning_rate=0.03,
-                           depth=4,
+                           depth=6,
                            gpu_ram_part=0.95,
                            task_type='CPU',
                            loss_function='Logloss'
@@ -34,4 +34,4 @@ print("loss = ", loss)
 X, Y = df_test[:, 0:13], df_test[:, 13]
 answer = model.predict(X)
 
-model.save_model("model.json", format="json", pool=df_train)
+model.save_model("model.cbm", format="cbm")

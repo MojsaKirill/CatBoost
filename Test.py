@@ -3,7 +3,7 @@ import pandas as pd
 
 df_test = pd.read_csv("csv/bank_test.csv", sep=',').to_numpy()
 
-model = CatBoostClassifier().load_model("model.json", format="json")
+model = CatBoostClassifier().load_model("model.cbm", format="cbm")
 
 X, Y = df_test[:, 0:13], df_test[:, 13]
 answer = model.predict(X)
