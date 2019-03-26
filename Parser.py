@@ -10,6 +10,5 @@ for i in range(len(X)):
     if (X[i][13]=='no'):
         X[i][13]=0
 
-df = pd.DataFrame(X)
 
-df.to_csv('csv/bank.csv', sep=',', encoding='utf-8')
+df = pd.DataFrame(X).to_csv('csv/my_bank.csv', sep=',', encoding='utf-8', index=False)

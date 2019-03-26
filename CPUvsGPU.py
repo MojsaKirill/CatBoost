@@ -8,6 +8,7 @@ train, test = epsilon()
 X_train, y_train = train.iloc[:,1:], train[0]
 X_test, y_test = train.iloc[:,1:], train[0]
 
+print(len(train))
 
 def train_on_cpu():
     model = CatBoostClassifier(
